@@ -1,5 +1,4 @@
 import os
-import pandas as pd
 import utils as ut
 from sklearn.svm import SVC
 from sklearn.model_selection import cross_val_score, KFold
@@ -42,9 +41,11 @@ def main():
         test_res_dict[label_name] = scores.mean()
 
     print("Train Results:")
-    print(train_res_dict)
+    for label_name, score in train_res_dict.items():
+        print("{}: {}".format(label_name, score))
     print("Test Results:")
-    print(test_res_dict)
+    for label_name, score in test_res_dict.items():
+        print("{}: {}".format(label_name, score))
 
 
 if __name__ == '__main__':
